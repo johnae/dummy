@@ -2,6 +2,9 @@
 
 
 def somevar = "somevariable"
+echo "not on node"
+sh "echo not on node"
+sh "env"
 
 node {
 
