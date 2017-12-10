@@ -22,7 +22,7 @@ node {
     }
   }
 
-  stash "Jenkinsfile", name: "Jenkinsfile"
+  stash includes: "Jenkinsfile", name: "Jenkinsfile"
 
 }
 
