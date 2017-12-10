@@ -1,8 +1,9 @@
 #!/usr/bin/groovy
 
-node {
 
-  def somevar = "somevariable"
+def somevar = "somevariable"
+
+node {
 
   stage("First stage") {
     echo "first stage, somevar: ${somevar}"
