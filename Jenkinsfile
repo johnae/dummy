@@ -14,11 +14,13 @@ node {
       somevar = 1234
       echo "first stage, set somevar, somevar: ${somevar}"
       sh "env"
+      sh "ls -lah"
     }
 
     stage("Second stage") {
       echo "second stage, somevar: ${somevar}"
       sh "env"
+      sh "ls -lah"
     }
   }
 
@@ -35,12 +37,24 @@ node {
     stage("Third stage") {
       echo "third stage, somevar: ${somevar}"
       sh "env"
+      sh "ls -lah"
     }
 
-    stage("Final stage") {
-      echo "final stage, somevar: ${somevar}"
+    stage("Fourth stage") {
+      echo "Fourth stage, somevar: ${somevar}"
       sh "env"
+      sh "ls -lah"
     }
   }
 
+}
+
+node {
+  withEnv(buildEnv) {
+    stage("Final stage") {
+      echo "Final stage, somevar: ${somevar}"
+      sh "env"
+      sh "ls -lah"
+    }
+  }
 }
