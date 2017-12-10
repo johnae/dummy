@@ -25,7 +25,7 @@ node {
   }
 
   stash includes: "Jenkinsfile", name: "Jenkinsfile"
-  stash includes: "src", name: "src"
+  stash includes: "src/**/*", name: "src"
 
 }
 
