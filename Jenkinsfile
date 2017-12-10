@@ -1,15 +1,13 @@
 #!/usr/bin/groovy
 
 
-def somevar = "somevariable"
-echo "not on node"
-sh "echo not on node"
-sh "env"
+def somevar
 
 node {
 
   stage("First stage") {
-    echo "first stage, somevar: ${somevar}"
+    somevar = 1234
+    echo "first stage, set somevar, somevar: ${somevar}"
   }
 
   stage("Second stage") {
