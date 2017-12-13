@@ -24,11 +24,13 @@ node('one') {
     }
   }
 
+  stash includes: "Jenkinsfile", name: "Jenkinsfile"
 }
 
 input "flyweight step, continue?"
 
 node('two') {
+  unstash "Jenkinsfile"
   withEnv(buildEnv) {
     stage("Third stage") {
       echo "third stage, somevar: ${somevar}"
@@ -46,6 +48,7 @@ node('two') {
 }
 
 node('one') {
+  unstash "Jenkinsfile"
   withEnv(buildEnv) {
     stage("Final stage") {
       echo "Final stage, somevar: ${somevar}"
