@@ -30,7 +30,7 @@ node('one') {
 input "flyweight step, continue?"
 
 node('two') {
-  unstash "Jenkinsfile"
+  checkout scm
   withEnv(buildEnv) {
     stage("Third stage") {
       echo "third stage, somevar: ${somevar}"
@@ -48,7 +48,7 @@ node('two') {
 }
 
 node('one') {
-  unstash "Jenkinsfile"
+  checkout scm
   withEnv(buildEnv) {
     stage("Final stage") {
       echo "Final stage, somevar: ${somevar}"
