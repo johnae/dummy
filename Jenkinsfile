@@ -24,17 +24,11 @@ node {
     }
   }
 
-  stash includes: "Jenkinsfile", name: "Jenkinsfile"
-  stash includes: "src/**/*", name: "src"
-
 }
 
 input "flyweight step, continue?"
 
 node {
-  unstash "Jenkinsfile"
-  unstash "src"
-
   withEnv(buildEnv) {
     stage("Third stage") {
       echo "third stage, somevar: ${somevar}"
