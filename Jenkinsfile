@@ -4,7 +4,7 @@
 def somevar
 def buildEnv = ["ABC=123"]
 
-node {
+node('one') {
 
   def scmVarMap = checkout scm
   scmVarMap.each { buildEnv.push("${it.key}=${it.value}") }
@@ -28,7 +28,7 @@ node {
 
 input "flyweight step, continue?"
 
-node {
+node('two') {
   withEnv(buildEnv) {
     stage("Third stage") {
       echo "third stage, somevar: ${somevar}"
@@ -45,7 +45,7 @@ node {
 
 }
 
-node {
+node('one') {
   withEnv(buildEnv) {
     stage("Final stage") {
       echo "Final stage, somevar: ${somevar}"
